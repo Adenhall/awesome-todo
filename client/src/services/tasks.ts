@@ -11,3 +11,7 @@ export type Task = {
 export const getIncompleteTasks = async () => {
   return axios.get<Task[]>("/api/tasks/incomplete");
 };
+
+export const markTaskAsCompleted = async (id: string) => {
+  return axios.post("/api/tasks/completed", { id });
+};

@@ -5,5 +5,10 @@ module Api
 
       render json: tasks, status: :ok
     end
+
+    def mark_complete
+      Task.find(params[:id]).update(completed_at: Time.now)
+      render json: {}, status: :ok
+    end
   end
 end

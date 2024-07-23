@@ -16,12 +16,15 @@ function App() {
     <div className="w-screen h-screen flex flex-col p-6 divide-y">
       <h1 className="text-3xl font-bold p-6">Tasks</h1>
       <div className="p-6">
-        {tasks.map(({ title, subtitle, due_date, priority }) => (
+        {tasks.map(({ id, title, subtitle, due_date, priority }) => (
           <Task
+            key={id}
+            id={id}
             title={title}
             subtitle={subtitle}
             priority={priority}
             dueDate={due_date}
+            onChecked={(id) => setTasks(tasks.filter((task) => task.id !== id))}
           />
         ))}
       </div>

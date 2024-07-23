@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'health_check', to: 'base#health_check'
 
     get 'tasks/incomplete', to: 'task#list_incomplete'
+    post 'tasks/completed', to: 'task#mark_complete'
   end
 
   # Serve the frontend through the root path
