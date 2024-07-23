@@ -1,17 +1,16 @@
-import { useEffect, useState } from "react";
-import { getIncompleteTasks, Task as ApiTask } from "./services/tasks";
+import { useState } from "react";
+import { getIncompleteTasks, Task as ApiTask } from "../services/tasks";
 
-import Task from "./components/Task";
+import Task from "../components/Task";
+import { LoaderFunction, useLoaderData } from "react-router-dom";
 
-function App() {
-  const [tasks, setTasks] = useState<ApiTask[]>([]);
-  useEffect(() => {
-    (async () => {
-      const res = await getIncompleteTasks();
+export const loader: LoaderFunction = async () => {
+  return getIncompleteTasks();
+};
 
-      setTasks(res.data);
-    })();
-  }, []);
+const Home = () => {
+  const { data } = useLoaderData() as { data: ApiTask[] }
+  const [tasks, setTasks] = useState<ApiTask[]>(data);
   return (
     <div className="w-screen h-screen flex flex-col p-6 divide-y">
       <h1 className="text-3xl font-bold p-6">Tasks</h1>
@@ -30,6 +29,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default Home;
