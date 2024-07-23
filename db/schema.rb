@@ -17,7 +17,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_23_084917) do
 
   create_table "tasks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "title", null: false
-    t.string "sub_title"
+    t.string "subtitle"
     t.datetime "due_date"
     t.integer "priority", default: 0, null: false
     t.boolean "completed", default: false, null: false
