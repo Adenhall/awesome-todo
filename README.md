@@ -7,6 +7,7 @@ An awesome TODO list with some cool features (TBA).
 
 ## Prerequisites
 In order to get started, you need to make sure you have the following things installed:
+- [PostgreSQL](https://www.postgresql.org/download/)
 - [Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) 7.1.0 or higher
 - [Node.js](https://nodejs.org/en) 20.15.0 or higher
 
