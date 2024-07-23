@@ -2,6 +2,9 @@
 
 An awesome TODO list with some cool features (TBA).
 
+![Kapture 2024-07-23 at 18 17 18](https://github.com/user-attachments/assets/0db5a411-f34d-4be1-b483-7177ffd458cb)
+
+
 ## Prerequisites
 In order to get started, you need to make sure you have the following things installed:
 - [Rails](https://guides.rubyonrails.org/getting_started.html#creating-a-new-rails-project-installing-rails) 7.1.0 or higher
