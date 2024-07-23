@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
     get 'tasks/incomplete', to: 'task#list_incomplete'
     post 'tasks/completed', to: 'task#mark_complete'
+    post 'tasks/new', to: 'task#create'
   end
 
   # Serve the frontend through the root path
