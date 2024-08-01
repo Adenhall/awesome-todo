@@ -1,7 +1,7 @@
 module Api
   class TaskController < Api::BaseController
     def list_incomplete
-      tasks = Task.incomplete
+      tasks = Task.incomplete.ordered_by_position
 
       render json: tasks, status: :ok
     end
@@ -20,6 +20,16 @@ module Api
       )
 
       { json: created, status: :created }
+    end
+
+    def reorder
+      ActiveRecord::Base.transaction do
+        params[:task_ids].each_with_index do |id, index|
+          Task.find(id).update(position: index)
+        end
+      end
+
+      head :ok
     end
   end
 end
