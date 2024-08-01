@@ -3,7 +3,7 @@ import { useState } from "react";
 import { LoaderFunction, useLoaderData, useNavigate } from "react-router-dom";
 import { DragDropContext, Draggable, Droppable, OnDragEndResponder } from "@hello-pangea/dnd";
 
-import { getIncompleteTasks, Task as ApiTask } from "../services/tasks";
+import { getIncompleteTasks, reorderTasks, Task as ApiTask } from "../services/tasks";
 import Task from "../components/Task";
 
 export const loader: LoaderFunction = async () => {
@@ -18,11 +18,13 @@ const Home = () => {
   const handleDrop: OnDragEndResponder = (result) => {
     const { destination, source } = result
     if (!destination) return;
-    setTasks((tasks) => {
-      tasks.splice(destination.index, 0, tasks.splice(source.index, 1)[0]);
+    
+    const reorderedTasks = Array.from(tasks);
+    reorderedTasks.splice(destination.index, 0, reorderedTasks.splice(source.index, 1)[0]);
+    
+    setTasks(reorderedTasks)
 
-      return [...tasks];
-    })
+    reorderTasks(reorderedTasks.map(({ id }) => id));
   }
 
   return (
